@@ -11,7 +11,7 @@ export interface ResponsesElement {
 }
 
 const RESPONSES_DATA: ResponsesElement[] = [
-  {id: 1, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+  {id: 1, auth_id: 112, msg: 'adwa', code: 213, date: 2133},
   {id: 2, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
   {id: 3, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
   {id: 4, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
