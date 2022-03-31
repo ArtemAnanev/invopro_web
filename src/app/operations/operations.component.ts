@@ -8,16 +8,16 @@ import { Component } from '@angular/core';
 export class OperationsComponent {
 
   columnDefs = [
-    { headerName: "id", field: "id" },
-    { headerName: "auth_id", field: "auth_id" },
-    { headerName: "card_number", field: "card_number" },
-    { headerName: "type", field: "type" },
-    { headerName: "date", field: "date" },
-    { headerName: "cur", field: "cur" },
-    { headerName: "oper_amount", field: "oper_amount" },
-    { headerName: "fee_amount", field: "fee_amount" },
-    { headerName: "total_amount", field: "total_amount" },
-    { headerName: "state ", field: "state " }
+    { headerName: "id", field: "id", sortable: true, filter: true },
+    { headerName: "auth_id", field: "auth_id", sortable: true, filter: true },
+    { headerName: "card_number", field: "card_number", sortable: true, filter: true },
+    { headerName: "type", field: "type", sortable: true, filter: true },
+    { headerName: "date", field: "date", sortable: true, filter: true },
+    { headerName: "cur", field: "cur", sortable: true, filter: true },
+    { headerName: "oper_amount", field: "oper_amount", sortable: true, filter: true },
+    { headerName: "fee_amount", field: "fee_amount", sortable: true, filter: true },
+    { headerName: "total_amount", field: "total_amount", sortable: true, filter: true },
+    { headerName: "state", field: "state", sortable: true, filter: true }
   ];
 
   rowData = [
