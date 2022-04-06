@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  AUTHORIZATIONS_API: 'http://srvkulan:8180/invopro/api/v1/auth',
+  OPERATIONS_API: 'http://srvkulan:8180/invopro/api/v1/oper',
+  RESPONSES_API: 'http://srvkulan:8180/invopro/api/v1/resp'
 };
 
 /*

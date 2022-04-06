@@ -1,26 +1,35 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-operations',
   templateUrl: './operations.component.html',
   styleUrls: ['./operations.component.scss']
 })
-export class OperationsComponent {
+export class OperationsComponent  implements OnInit{
 
   columnDefs = [
-    { headerName: "id", field: "id", sortable: true, filter: true },
-    { headerName: "auth_id", field: "auth_id", sortable: true, filter: true },
-    { headerName: "card_number", field: "card_number", sortable: true, filter: true },
-    { headerName: "type", field: "type", sortable: true, filter: true },
-    { headerName: "date", field: "date", sortable: true, filter: true },
-    { headerName: "cur", field: "cur", sortable: true, filter: true },
-    { headerName: "oper_amount", field: "oper_amount", sortable: true, filter: true },
-    { headerName: "fee_amount", field: "fee_amount", sortable: true, filter: true },
-    { headerName: "total_amount", field: "total_amount", sortable: true, filter: true },
-    { headerName: "state", field: "state", sortable: true, filter: true }
+    { headerName: "id", field: "id", sortable: true, filter: true, resizable: true },
+    { headerName: "auth_id", field: "auth_id", sortable: true, filter: true, resizable: true },
+    { headerName: "card_number", field: "card_number", sortable: true, filter: true, resizable: true },
+    { headerName: "type", field: "type", sortable: true, filter: true, resizable: true },
+    { headerName: "date", field: "date", sortable: true, filter: true, resizable: true },
+    { headerName: "cur", field: "cur", sortable: true, filter: true, resizable: true },
+    { headerName: "oper_amount", field: "oper_amount", sortable: true, filter: true, resizable: true },
+    { headerName: "fee_amount", field: "fee_amount", sortable: true, filter: true, resizable: true },
+    { headerName: "total_amount", field: "total_amount", sortable: true, filter: true, resizable: true },
+    { headerName: "state", field: "state", sortable: true, filter: true, resizable: true }
   ];
 
-  rowData = [
+  rowData: any;
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.rowData = this.http.get(environment.OPERATIONS_API);
+  }
+ /* rowData = [
     { id: 1, auth_id: 5377643, card_number: 45874915377643, type: "incoming", date: 11.10, cur: "rub", oper_amount: 1200, fee_amount: 20, total_amount: 1220, state: 1},
     { id: 2, auth_id: 5322643, card_number: 45874985322643, type: "incoming", date: 11.11, cur: "rub", oper_amount: 1200, fee_amount: 20, total_amount: 1220, state: 2 },
     { id: 3, auth_id: 1377643, card_number: 45874981377643, type: "incoming", date: 10.10, cur: "rub", oper_amount: 1200, fee_amount: 20, total_amount: 1220, state: 1},
@@ -37,5 +46,5 @@ export class OperationsComponent {
     { id: 14, auth_id: 3337643, card_number: 4587493337643, type: "incoming", date: 9.10, cur: "rub", oper_amount: 1200, fee_amount: 20, total_amount: 1220, state: 1 },
     { id: 15, auth_id: 5837643, card_number: 4587495837643, type: "incoming", date: 2.12, cur: "rub", oper_amount: 1200, fee_amount: 20, total_amount: 1220, state: 2 }
   ];
-
+  */
 }

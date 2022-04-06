@@ -1,42 +1,43 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from "@angular/material/paginator";
-import { MatTableDataSource } from "@angular/material/table";
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
-export interface ResponsesElement {
-  id: number;
-  auth_id: number;
-  msg: any;
-  code: number;
-  date: any
-}
 
-const RESPONSES_DATA: ResponsesElement[] = [
-  {id: 1, auth_id: 112, msg: 'adwa', code: 213, date: 2133},
-  {id: 2, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 3, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 4, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 5, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 6, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 7, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 8, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 9, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-  {id: 10, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
-];
 
 @Component({
   selector: 'app-responses',
   templateUrl: './responses.component.html',
   styleUrls: ['./responses.component.scss']
 })
-export class ResponsesComponent implements AfterViewInit {
+export class ResponsesComponent implements OnInit{
 
-  displayedColumns: string[] = ['id', 'auth_id', 'msg', 'code', 'date'];
-  dataSource = new MatTableDataSource<ResponsesElement>(RESPONSES_DATA);
+  columnDefs = [
+    { headerName: "id", field: "id", sortable: true, filter: true, resizable: true },
+    { headerName: "auth_id", field: "auth_id", sortable: true, filter: true, resizable: true },
+    { headerName: "msg", field: "msg", sortable: true, filter: true, resizable: true },
+    { headerName: "code", field: "code", sortable: true, filter: true, resizable: true },
+    { headerName: "date", field: "date", sortable: true, filter: true, resizable: true }
+  ];
+/*
+  rowData = [
+    {id: 1, auth_id: 112, msg: 'adwa', code: 213, date: 2133},
+    {id: 2, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 3, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 4, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 5, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 6, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 7, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 8, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 9, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+    {id: 10, auth_id: 112, msg: 'adwad', code: 213, date: 2133},
+  ];
+*/
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  rowData: any;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(){
+    this.rowData = this.http.get(environment.RESPONSES_API);
   }
-
 }
